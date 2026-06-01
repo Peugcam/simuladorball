@@ -1,0 +1,31 @@
+{
+  "id": "copa-brasil",
+  "nome": "Copa do Brasil",
+  "tipo": "mata-mata",
+  "cor": "#e8b400",
+  "fases": ["Oitavas", "Quartas", "Semi", "Final"],
+  "times": {
+    "flu": { "nome": "Fluminense", "sigla": "FLU", "cor": "#7a1c2b" },
+    "vas": { "nome": "Vasco", "sigla": "VAS", "cor": "#111111" },
+    "cor": { "nome": "Corinthians", "sigla": "COR", "cor": "#111111" },
+    "int": { "nome": "Internacional", "sigla": "INT", "cor": "#d11a2a" },
+    "gre": { "nome": "Grêmio", "sigla": "GRE", "cor": "#0d80c4" },
+    "mir": { "nome": "Mirassol", "sigla": "MIR", "cor": "#1f9b54" },
+    "vit": { "nome": "Vitória", "sigla": "VIT", "cor": "#d11a2a" },
+    "cap": { "nome": "Athletico-PR", "sigla": "CAP", "cor": "#d11a2a" },
+    "juv": { "nome": "Juventude", "sigla": "JUV", "cor": "#1a7a3c" },
+    "cam": { "nome": "Atlético-MG", "sigla": "CAM", "cor": "#111111" },
+    "san": { "nome": "Santos", "sigla": "SAN", "cor": "#ffffff" },
+    "rem": { "nome": "Remo", "sigla": "REM", "cor": "#1e4fa0" },
+    "cha": { "nome": "Chapecoense", "sigla": "CHA", "cor": "#1a7a3c" },
+    "cru": { "nome": "Cruzeiro", "sigla": "CRU", "cor": "#1a3a8f" },
+    "pal": { "nome": "Palmeiras", "sigla": "PAL", "cor": "#006437" },
+    "for": { "nome": "Fortaleza", "sigla": "FOR", "cor": "#1e4fa0" }
+  },
+  "confrontos_iniciais": [
+    ["flu", "vas"], ["cor", "int"],
+    ["gre", "mir"], ["vit", "cap"],
+    ["juv", "cam"], ["san", "rem"],
+    ["cha", "cru"], ["pal", "for"]
+  ]
+}

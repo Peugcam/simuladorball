@@ -1,0 +1,31 @@
+{
+  "id": "libertadores",
+  "nome": "Libertadores",
+  "tipo": "mata-mata",
+  "cor": "#1b9e4b",
+  "fases": ["Oitavas", "Quartas", "Semi", "Final"],
+  "times": {
+    "est": { "nome": "Estudiantes", "sigla": "EST", "cor": "#d11a2a" },
+    "uca": { "nome": "U. Católica", "sigla": "UCA", "cor": "#1e4fa0" },
+    "ros": { "nome": "Rosario Central", "sigla": "ROS", "cor": "#0d4ea6" },
+    "cor": { "nome": "Corinthians", "sigla": "COR", "cor": "#111111" },
+    "cru": { "nome": "Cruzeiro", "sigla": "CRU", "cor": "#1a3a8f" },
+    "fla": { "nome": "Flamengo", "sigla": "FLA", "cor": "#e30613" },
+    "tol": { "nome": "Tolima", "sigla": "TOL", "cor": "#b59a2d" },
+    "idv": { "nome": "Independiente del Valle", "sigla": "IDV", "cor": "#13243f" },
+    "mir": { "nome": "Mirassol", "sigla": "MIR", "cor": "#1f9b54" },
+    "ldu": { "nome": "LDU", "sigla": "LDU", "cor": "#ffffff" },
+    "pal": { "nome": "Palmeiras", "sigla": "PAL", "cor": "#006437" },
+    "cer": { "nome": "Cerro Porteño", "sigla": "CER", "cor": "#d4001f" },
+    "pla": { "nome": "Platense", "sigla": "PLA", "cor": "#6a3d1f" },
+    "coq": { "nome": "Coquimbo Unido", "sigla": "COQ", "cor": "#f6c700" },
+    "flu": { "nome": "Fluminense", "sigla": "FLU", "cor": "#7a1c2b" },
+    "irv": { "nome": "Ind. Rivadavia", "sigla": "IRV", "cor": "#1e62b0" }
+  },
+  "confrontos_iniciais": [
+    ["cru", "fla"], ["ros", "cor"],
+    ["mir", "ldu"], ["pal", "cer"],
+    ["est", "uca"], ["tol", "idv"],
+    ["pla", "coq"], ["flu", "irv"]
+  ]
+}
