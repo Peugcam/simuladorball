@@ -1,0 +1,7 @@
+.home { max-width: 900px; margin: 0 auto; padding: 48px 20px; text-align: center; }
+.home__head h1 { font-size: 40px; letter-spacing: -1px; }
+.home__head p { color: #9ca3af; margin-top: 8px; }
+.home__cards { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+.home__card { position: relative; width: 240px; height: 140px; border-radius: 14px; border: 1px solid #2a2f3a; background: #1a1d24; color: #f5f5f5; cursor: pointer; font-size: 20px; font-weight: 800; overflow: hidden; }
+.home__card:hover { border-color: var(--cor); transform: translateY(-2px); transition: 0.15s; }
+.home__card-bar { position: absolute; inset: 0 0 auto 0; height: 8px; background: var(--cor); }
