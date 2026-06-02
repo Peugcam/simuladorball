@@ -1,0 +1,4 @@
+.sharebar { display: flex; gap: 10px; align-items: center; justify-content: center; padding: 12px; flex-wrap: wrap; }
+.sharebar button { padding: 8px 14px; border-radius: 8px; border: 1px solid #2a2f3a; background: #1a1d24; color: #f5f5f5; cursor: pointer; font-size: 14px; }
+.sharebar button:hover { border-color: #4b5563; }
+.sharebar__msg { color: #34d399; font-size: 13px; }
