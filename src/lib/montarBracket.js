@@ -34,3 +34,25 @@ export function montarBracket(comp, winners = {}) {
   };
   return { rounds, side };
 }
+
+// Remove vencedores que não pertencem mais ao seu confronto (efeito de uma
+// troca a montante). Reaplica em cascata até estabilizar, pois remover um
+// vencedor pode invalidar o da fase seguinte.
+export function sanearWinners(comp, winners = {}) {
+  let atual = { ...winners };
+  let mudou = true;
+  while (mudou) {
+    mudou = false;
+    const { rounds } = montarBracket(comp, atual);
+    for (const round of rounds) {
+      for (const m of round) {
+        const w = atual[m.id];
+        if (w && w !== m.a?.id && w !== m.b?.id) {
+          delete atual[m.id];
+          mudou = true;
+        }
+      }
+    }
+  }
+  return atual;
+}

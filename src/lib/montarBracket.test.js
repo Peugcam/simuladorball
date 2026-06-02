@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { montarBracket } from "./montarBracket";
+import { montarBracket, sanearWinners } from "./montarBracket";
 
 const comp = {
   fases: ["Oitavas", "Quartas", "Semi", "Final"],
@@ -40,5 +40,23 @@ describe("montarBracket (mata-mata)", () => {
     const { side } = montarBracket(comp, {});
     expect(side.left).toEqual(["m0", "m1", "m2", "m3"]);
     expect(side.right).toEqual(["m4", "m5", "m6", "m7"]);
+  });
+});
+
+describe("sanearWinners", () => {
+  it("remove em cascata os vencedores que não estão mais no confronto", () => {
+    // "a" venceu m0 e foi propagado até ser campeão (m8, m12, m14)
+    const campeaoA = { m0: "a", m8: "a", m12: "a", m14: "a" };
+    // troca m0 para "b": "a" não está mais em m8 e deve cair de m8/m12/m14
+    const saneado = sanearWinners(comp, { ...campeaoA, m0: "b" });
+    expect(saneado.m0).toBe("b");
+    expect(saneado.m8).toBeUndefined();
+    expect(saneado.m12).toBeUndefined();
+    expect(saneado.m14).toBeUndefined();
+  });
+
+  it("preserva vencedores que continuam válidos", () => {
+    const winners = { m0: "a", m8: "a", m12: "a", m14: "a" };
+    expect(sanearWinners(comp, winners)).toEqual(winners);
   });
 });

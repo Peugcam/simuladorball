@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { COMPETICOES } from "../data";
-import { montarBracket } from "../lib/montarBracket";
+import { montarBracket, sanearWinners } from "../lib/montarBracket";
 import { montarCompMundial } from "../lib/montarMundial";
 import { encodePalpite } from "../lib/palpite";
 import Bracket from "./Bracket";
@@ -20,6 +20,8 @@ export default function Simulador({ compId, inicial, onBack }) {
   );
   const bracketRef = useRef(null);
 
+  const compBracket = ehMundial ? montarCompMundial(comp, grupos, terceiros) : comp;
+
   const estado = ehMundial
     ? { comp: compId, grupos, terceiros, winners }
     : { comp: compId, winners };
@@ -32,11 +34,7 @@ export default function Simulador({ compId, inicial, onBack }) {
   }, [winners, grupos, terceiros]); // eslint-disable-line
 
   const onPick = (matchId, teamId) => {
-    setWinners((w) => {
-      const novo = { ...w, [matchId]: teamId };
-      // limpa escolhas a jusante que dependiam do vencedor antigo
-      return novo;
-    });
+    setWinners((w) => sanearWinners(compBracket, { ...w, [matchId]: teamId }));
   };
 
   const getLink = () =>
@@ -59,7 +57,6 @@ export default function Simulador({ compId, inicial, onBack }) {
     );
   }
 
-  const compBracket = ehMundial ? montarCompMundial(comp, grupos, terceiros) : comp;
   const bracket = montarBracket(compBracket, winners);
 
   return (
