@@ -1,5 +1,0 @@
-.simulador { padding: 16px; }
-.simulador h2 { text-align: center; border-bottom: 3px solid var(--cor); display: inline-block; padding-bottom: 4px; margin: 8px auto; }
-.simulador__back, .simulador__edit { background: none; border: none; color: #9ca3af; cursor: pointer; font-size: 13px; padding: 6px; }
-.simulador__back:hover, .simulador__edit:hover { color: #f5f5f5; }
-.simulador__disclaimer { text-align: center; color: #6b7280; font-size: 11px; max-width: 600px; margin: 24px auto 0; line-height: 1.5; }
