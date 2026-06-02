@@ -12,3 +12,12 @@
 @media (max-width: 720px) {
   .bracket { justify-content: flex-start; }
 }
+
+/* Layout vertical para celular: cada fase empilhada, de cima para baixo. */
+.bracket-mobile {
+  display: flex; flex-direction: column; gap: 22px;
+  padding: 16px; max-width: 480px; margin: 0 auto;
+}
+.bracket-mobile__fase { display: flex; flex-direction: column; gap: 8px; }
+.bracket-mobile__matches { display: flex; flex-direction: column; gap: 10px; }
+.bracket-mobile .bracket__campeao { margin-top: 4px; font-size: 20px; }

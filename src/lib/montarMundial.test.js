@@ -23,8 +23,8 @@ describe("montarR32", () => {
     expect(flat).toHaveLength(32);
   });
 
-  it("é determinístico: primeiro confronto é 1ºA x 2ºA", () => {
+  it("é determinístico: primeiro confronto é 2ºA x 2ºB", () => {
     const conf = montarR32(grupos, terceiros);
-    expect(conf[0]).toEqual(["A1", "B2"]);
+    expect(conf[0]).toEqual(["A2", "B2"]);
   });
 });
