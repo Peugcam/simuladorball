@@ -12,6 +12,26 @@ export default function ShareBar({ getLink, targetRef }) {
     setTimeout(() => setMsg(""), 2200);
   };
 
+  // Captura o chaveamento INTEIRO. No celular o bracket tem scroll horizontal,
+  // então expandimos ele à largura total (classe .capturando) antes de gerar a
+  // imagem — senão a foto compartilhada sai cortada e perde o caminho do campeão.
+  const capturar = async (render) => {
+    const wrap = targetRef.current;
+    if (!wrap) return null;
+    wrap.classList.add("capturando");
+    await new Promise(requestAnimationFrame); // garante o reflow antes de medir
+    try {
+      return await render(wrap, {
+        backgroundColor: FUNDO,
+        pixelRatio: 2,
+        width: wrap.scrollWidth,
+        height: wrap.scrollHeight,
+      });
+    } finally {
+      wrap.classList.remove("capturando");
+    }
+  };
+
   // Botão principal: usa o menu de compartilhamento nativo do celular
   // (WhatsApp, Instagram, Stories...). Anexa a imagem do chaveamento quando
   // o aparelho permite; senão compartilha o link; sem suporte, copia o link.
@@ -19,11 +39,8 @@ export default function ShareBar({ getLink, targetRef }) {
     const url = getLink();
     setBusy(true);
     try {
-      let file = null;
-      if (targetRef.current) {
-        const blob = await toBlob(targetRef.current, { backgroundColor: FUNDO, pixelRatio: 2 });
-        if (blob) file = new File([blob], "bolao-copa-2026.png", { type: "image/png" });
-      }
+      const blob = await capturar(toBlob);
+      const file = blob && new File([blob], "bolao-copa-2026.png", { type: "image/png" });
 
       if (file && navigator.canShare?.({ files: [file] })) {
         await navigator.share({ title: "Bolão da Copa 2026", text: TEXTO, url, files: [file] });
@@ -53,8 +70,8 @@ export default function ShareBar({ getLink, targetRef }) {
   };
 
   const baixarImagem = async () => {
-    if (!targetRef.current) return;
-    const dataUrl = await toPng(targetRef.current, { backgroundColor: FUNDO, pixelRatio: 2 });
+    const dataUrl = await capturar(toPng);
+    if (!dataUrl) return;
     const link = document.createElement("a");
     link.download = "bolao-copa-2026.png";
     link.href = dataUrl;

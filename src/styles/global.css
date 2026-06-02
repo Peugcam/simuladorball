@@ -192,6 +192,11 @@ footer{text-align:center;color:var(--mut);font-size:12.5px;margin-top:40px;line-
 .bracket{scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
 .round{scroll-snap-align:start}
 
+/* durante a captura da imagem: expande o bracket à largura total (senão a
+   imagem sai cortada no celular) e some com os elementos que não vão na foto */
+.capturando .bracket{overflow:visible;width:max-content;max-width:none}
+.capturando .bracket-hint,.capturando .confetti{display:none}
+
 /* dica de arraste — só aparece no toque/mobile (ver media query) */
 .bracket-hint{display:none;text-align:center;color:var(--mut);
   font-family:'Barlow Condensed';font-weight:600;letter-spacing:.1em;
