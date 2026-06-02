@@ -1,4 +1,5 @@
 import { LETRAS, TIMES } from "../data/mundial";
+import Flag from "./Flag";
 
 const POS = ["1º", "2º", "3º", "4º"];
 const tagFor = (i) => (i < 2 ? "Avança" : i === 2 ? "Disputa 3º" : "Fora");
@@ -19,7 +20,7 @@ export default function GruposStep({ grupos, onMove }) {
             return (
               <div className={`team ${clsFor(i)}`} key={id}>
                 <span className="pos">{POS[i]}</span>
-                <span className="flag">{t.flag}</span>
+                <Flag cc={t.cc} emoji={t.flag} />
                 <span className="tname">{t.nome}</span>
                 <span className="tag">{tagFor(i)}</span>
                 <span className="arrows">

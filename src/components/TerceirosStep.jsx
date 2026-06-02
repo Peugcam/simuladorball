@@ -1,4 +1,5 @@
 import { TIMES } from "../data/mundial";
+import Flag from "./Flag";
 
 // terceiros: array de 12 letras de grupo, na ordem de força escolhida (os 8 primeiros avançam).
 // grupos: usado para descobrir quem é o 3º colocado atual de cada grupo (grupos[g][2]).
@@ -13,7 +14,7 @@ export default function TerceirosStep({ terceiros, grupos, onMove }) {
             <div className={`third ${i < 8 ? "in8" : "outx"}`}>
               <span className="pos">{i + 1}</span>
               <span className="grpref">3º {g}</span>
-              <span className="flag">{t.flag}</span>
+              <Flag cc={t.cc} emoji={t.flag} />
               <span className="tname">{t.nome}</span>
               <span
                 className="tag"

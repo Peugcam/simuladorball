@@ -38,7 +38,9 @@ h1{
   filter:drop-shadow(0 6px 18px rgba(247,201,72,.18));
 }
 .sub{color:var(--mut); max-width:560px; margin:14px auto 0; font-size:15.5px; line-height:1.5}
-.flagline{font-size:22px; letter-spacing:2px; margin-top:14px; opacity:.9}
+.flagline{display:flex;gap:9px;justify-content:center;align-items:center;margin-top:18px;flex-wrap:wrap}
+.flagline__f{font-size:26px;opacity:.96;transition:transform .2s}
+.flagline__f:hover{transform:translateY(-3px) scale(1.05)}
 
 /* STEPPER */
 .steps{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin:30px 0 8px}
@@ -87,6 +89,12 @@ h1{
   font-family:'Anton';font-size:16px;width:24px;text-align:center;color:var(--mut);flex:none;
 }
 .flag{font-size:25px;line-height:1;flex:none;width:30px;text-align:center}
+/* bandeiras SVG (flag-icons): cantos suaves + leve relevo = cara de transmissão */
+.flag.fi{
+  width:1.5em;height:1.08em;border-radius:3px;
+  background-size:cover;background-position:center;vertical-align:middle;
+  box-shadow:0 1px 3px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.1);
+}
 .tname{flex:1;font-weight:600;font-size:15px}
 .tag{font-family:'Barlow Condensed';font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
   padding:3px 7px;border-radius:6px;flex:none}
@@ -146,6 +154,8 @@ h1{
   border:1px solid rgba(247,201,72,.5);box-shadow:0 0 60px -10px rgba(247,201,72,.4);
 }
 .champcard .flag{font-size:64px;width:auto;animation:bob 2.4s ease-in-out infinite}
+.champcard .champflag{font-size:60px;width:1.5em;height:1.08em;border-radius:6px;
+  box-shadow:0 10px 30px -8px rgba(0,0,0,.7), inset 0 0 0 1px rgba(255,255,255,.18)}
 @keyframes bob{50%{transform:translateY(-8px)}}
 .champcard .cn{font-family:'Anton';font-size:34px;text-transform:uppercase;
   background:linear-gradient(180deg,#fff,#f7c948);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -172,3 +182,92 @@ footer{text-align:center;color:var(--mut);font-size:12.5px;margin-top:40px;line-
 /* compartilhamento */
 .sharebar{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:18px}
 .sharebar__msg{color:var(--green);font-size:13px;font-family:'Barlow Condensed';font-weight:700;letter-spacing:.08em}
+
+/* ============================================================
+   RESPONSIVO — o app foi desenhado p/ desktop; aqui ele se
+   adapta a tablet e celular sem perder o ar premium.
+   ============================================================ */
+
+/* scroll-snap no bracket: cada rodada "encaixa" ao arrastar */
+.bracket{scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+.round{scroll-snap-align:start}
+
+/* dica de arraste — só aparece no toque/mobile (ver media query) */
+.bracket-hint{display:none;text-align:center;color:var(--mut);
+  font-family:'Barlow Condensed';font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;font-size:12px;margin:-2px 0 10px}
+
+/* ---- TABLET (≤900px) ---- */
+@media (max-width:900px){
+  .wrap{padding:0 16px 72px}
+  header{padding:38px 8px 22px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:13px}
+}
+
+/* ---- CELULAR (≤620px) ---- */
+@media (max-width:620px){
+  .wrap{padding:0 13px 64px}
+
+  /* header mais compacto e legível */
+  header{padding:30px 4px 18px}
+  .kicker{letter-spacing:.22em;font-size:11px;line-height:1.5}
+  .sub{font-size:14px;margin-top:10px}
+  .flagline{gap:7px;margin-top:14px}
+  .flagline__f{font-size:21px}
+
+  /* stepper: pílulas menores, sem estourar a tela */
+  .steps{gap:6px;margin:22px 0 4px}
+  .stepbtn{font-size:12px;padding:8px 12px;gap:6px}
+  .stepbtn .n{width:18px;height:18px;font-size:11px}
+
+  .secttitle{font-size:21px;margin-top:20px}
+  .secthint{font-size:13px}
+  .qualbar{gap:12px;font-size:12.5px}
+
+  /* grupos: 1 coluna, respiro menor */
+  .grid{grid-template-columns:1fr;gap:11px}
+  .group{padding:12px 11px 13px;border-radius:14px}
+  .gbadge{width:32px;height:32px;font-size:16px}
+  .team{padding:8px 7px;gap:8px}
+  .pos{width:20px;font-size:14px}
+  .tname{font-size:14px}
+  .tag{font-size:10px;padding:2px 6px}
+  .flag.fi{font-size:22px}
+  .arrows button{width:30px;height:21px}  /* alvo de toque maior */
+
+  /* terceiros */
+  .third{padding:10px;gap:9px}
+  .third .grpref{font-size:12px}
+
+  /* BRACKET: rodadas mais estreitas + dica de arraste */
+  .bracket{gap:14px;padding:4px 2px 14px}
+  .round{min-width:148px}
+  .rtitle{font-size:11px;letter-spacing:.08em}
+  .match{padding:5px}
+  .slot{padding:7px 7px;font-size:13px;gap:7px}
+  .slot .tname{font-size:12.5px}
+  .slot .flag{font-size:17px}
+  .bracket-hint{display:block}
+
+  /* campeão */
+  .champcard{padding:22px 28px;border-radius:16px}
+  .champcard .champflag{font-size:48px}
+  .champcard .cn{font-size:27px}
+
+  /* navegação: botões ocupam a linha toda e empilham */
+  .navrow{flex-direction:column-reverse;gap:10px}
+  .navrow .btn{width:100%;justify-content:center}
+  .navrow > span{display:none}
+  .btn{font-size:15px;padding:13px 22px}
+
+  /* compartilhar: empilha bonito */
+  .sharebar{gap:8px}
+  .sharebar .btn{flex:1;min-width:140px;justify-content:center}
+}
+
+/* ---- CELULAR ESTREITO (≤380px) ---- */
+@media (max-width:380px){
+  h1{font-size:42px}
+  .stepbtn{font-size:11px;padding:7px 9px}
+  .round{min-width:140px}
+}

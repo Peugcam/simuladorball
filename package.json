@@ -11,9 +11,10 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "flag-icons": "^7.5.0",
+    "html-to-image": "^1.11.13",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "html-to-image": "^1.11.13"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.8",

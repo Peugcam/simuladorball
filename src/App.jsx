@@ -3,6 +3,7 @@ import { GRUPOS, LETRAS, TIMES } from "./data/mundial";
 import { montarConfrontos, FASES } from "./lib/copa";
 import { montarBracket, sanearWinners } from "./lib/montarBracket";
 import { encodePalpite, decodePalpite } from "./lib/palpite";
+import Flag from "./components/Flag";
 import GruposStep from "./components/GruposStep";
 import TerceirosStep from "./components/TerceirosStep";
 import BracketStep from "./components/BracketStep";
@@ -77,7 +78,11 @@ export default function App() {
           48 seleções, 12 grupos, um campeão. Ordene cada grupo do jeito que você acha que vai
           terminar, escolha os melhores terceiros e crave o seu campeão.
         </p>
-        <div className="flagline">🏆 ⚽ 🇧🇷 🇦🇷 🇫🇷 🇪🇸 🇩🇪 🇵🇹 🇳🇱 🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+        <div className="flagline">
+          {["br", "ar", "fr", "es", "de", "pt", "nl", "gb-eng"].map((cc) => (
+            <Flag key={cc} cc={cc} className="flagline__f" />
+          ))}
+        </div>
       </header>
 
       <div className="steps">

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { FASES } from "../lib/copa";
+import Flag from "./Flag";
 
 const CORES = ["#f7c948", "#22c98a", "#ff5a5f", "#ffb02e", "#ffffff", "#1bbf7c"];
 
@@ -14,7 +15,7 @@ function Slot({ team, vencedor, onPick }) {
   }
   return (
     <div className={"slot" + (vencedor ? " win" : "")} onClick={() => onPick(team.id)}>
-      <span className="flag">{team.flag}</span>
+      <Flag cc={team.cc} emoji={team.flag} />
       <span className="tname">{team.nome}</span>
     </div>
   );
@@ -46,6 +47,7 @@ export default function BracketStep({ bracket, onPick }) {
   return (
     <>
       <div className="confetti" ref={confettiRef} />
+      <div className="bracket-hint">← arraste para ver todas as fases →</div>
       <div className="bracket">
         {bracket.rounds.map((matches, r) => (
           <div className="round" key={r}>
@@ -62,7 +64,7 @@ export default function BracketStep({ bracket, onPick }) {
       <div className="champwrap">
         {campeao && (
           <div className="champcard">
-            <span className="flag">{campeao.flag}</span>
+            <Flag cc={campeao.cc} emoji={campeao.flag} className="champflag" />
             <span className="cl">★ Campeão Mundial ★</span>
             <span className="cn">{campeao.nome}</span>
           </div>
